@@ -16,3 +16,7 @@ spring:
 server:
   port: 8080
   shutdown: graceful
+
+jwt:
+  secret: 39dc8fe89451c3819bd22276b1ee79148a2f317c35a871c4d88459148310fc6e
+  expiration: 900000
