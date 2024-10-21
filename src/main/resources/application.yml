@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: exam-portal
+  datasource:
+    url: jdbc:postgresql://localhost:5432/exam-portal
+    username: postgres
+    password: postgres
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  output:
+    ansi:
+      enabled: always
+
+server:
+  port: 8080
+  shutdown: graceful
