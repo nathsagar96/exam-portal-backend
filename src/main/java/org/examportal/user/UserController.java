@@ -21,14 +21,15 @@ public class UserController {
 
   @GetMapping("/{userId}")
   @ResponseStatus(HttpStatus.OK)
-  public UserDto findById(@PathVariable final Long userId) {
+  public UserResponseDto findById(@PathVariable final Long userId) {
     return userService.findById(userId);
   }
 
   @PutMapping("/{userId}")
   @ResponseStatus(HttpStatus.OK)
-  public UserDto update(@PathVariable final Long userId, @RequestBody @Valid final UserDto userDto) {
-    return userService.update(userId, userDto);
+  public UserResponseDto update(
+      @PathVariable final Long userId, @RequestBody @Valid final UserRequestDto request) {
+    return userService.update(userId, request);
   }
 
   @DeleteMapping("/{userId}")

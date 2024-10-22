@@ -1,6 +1,5 @@
 package org.examportal.user;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,27 +10,29 @@ public class UserService {
 
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
+  private final UserMapper userMapper;
 
-  public UserDto findById(Long userId) {
+  public UserResponseDto findById(Long userId) {
     User user =
         userRepository
             .findById(userId)
             .orElseThrow(() -> new IllegalStateException("User not found with id " + userId));
 
-    return new UserDto(user.getId(), user.getUsername(), user.getEmail(), null, user.getRole());
+    return userMapper.toDto(user);
   }
 
-  public UserDto update(Long userId, @Valid UserDto userDto) {
+  public UserResponseDto update(Long userId, UserRequestDto request) {
     User user =
         userRepository
             .findById(userId)
             .orElseThrow(() -> new IllegalStateException("User not found with id " + userId));
 
-    user.setEmail(userDto.email());
-    user.setPassword(passwordEncoder.encode(userDto.password()));
-    user.setRole(userDto.role());
+    user.setUsername(request.username());
+    user.setEmail(request.email());
+    user.setPassword(passwordEncoder.encode(request.password()));
+    user.setRole(Role.valueOf(request.role()));
 
-    return new UserDto(user.getId(), user.getUsername(), user.getEmail(), null, user.getRole());
+    return userMapper.toDto(user);
   }
 
   public void deleteById(Long userId) {
