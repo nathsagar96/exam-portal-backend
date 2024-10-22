@@ -2,7 +2,7 @@ package org.examportal.exam.question;
 
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface QuestionMapper {
 
     Question toEntity(QuestionRequestDto questionRequestDto);

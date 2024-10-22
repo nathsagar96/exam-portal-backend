@@ -2,7 +2,7 @@ package org.examportal.exam.category;
 
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
   Category toEntity(CategoryRequestDto categoryRequestDto);
