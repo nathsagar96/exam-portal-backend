@@ -1,5 +1,6 @@
 package org.examportal.exam.quiz;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/quizzes")
+@SecurityRequirement(name = "bearerAuth")
 public class QuizController {
   private final QuizService quizService;
 

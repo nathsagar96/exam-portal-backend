@@ -1,6 +1,8 @@
 package org.examportal.exam.question;
 
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/questions")
+@SecurityRequirement(name = "bearerAuth")
 public class QuestionController {
 
   private final QuestionService questionService;

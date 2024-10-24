@@ -1,8 +1,8 @@
 package org.examportal.exam.category;
 
-import java.util.List;
-
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/categories")
+@SecurityRequirement(name = "bearerAuth")
 public class CategoryController {
 
   private final CategoryService categoryService;
